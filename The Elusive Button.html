@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>The Elusive Button</title>
+
+        <!--BootstrapcDN-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        
+        <!--Link to CSS file-->
+        <link rel="stylesheet" href="styleEB.css"/>
+
+        <!--set viewport meta-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href='http://fonts.googleapis.com/css?family=Oswald'rel='stylesheet' type='text/css'>
+
+        <link href="https://fonts.googleapis.com/css?family=Sigmar+One&display=swap" rel="stylesheet">
+
+        <!--link to Google fonts Zhi Mang Xing-->
+        <link href="https://fonts.googleapis.com/css?family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Mukta|Zhi+Mang+Xing&display=swap" rel="stylesheet">
+        
+        <!--link to Font Awesome-->
+        <script src="https://kit.fontawesome.com/3ad35dc203.js" crossorigin="anonymous"></script>
+     
+    </head>
+
+    <body>
+        <section class="text-center">
+            <div>
+               <button id="tricky">
+                   Try Click Me ;)
+               </button>
+            </br>
+
+            <p>This button has been clicked <span id="click-count">0</span> times.</p>
+            </br>
+            <p>This button has been hovered <span id="hover-count">0</span> times.</p>
+
+
+               <script>
+                   const button = document.getElementById('tricky');
+                   const countSpan = document.getElementById('click-count');
+                   const hoverSpan = document.getElementById('hover-count');
+
+                   function randomP(){
+                        const randomPosition = [
+                            "-75px, 0px",
+                            "100px, 0px",
+                            "0px, -100px",
+                            "-50px, -50px",
+                            "50px, -50px"
+                        ];
+                        const randomIndex = randomPosition[Math.floor(Math.random() * randomPosition.length)];
+                        return 'translate(' + randomIndex + ')'  
+                    }
+
+                   let clickCount = 0
+                   let hoverCount = 0
+
+                   button.onclick = function () {
+                       clickCount++;
+                       countSpan.innerHTML = clickCount;
+                   }
+
+                   button.onmouseover = function () {
+                       hoverCount++;
+                       hoverSpan.innerHTML = hoverCount;
+                       button.style.transform = randomP();
+
+                       if (hoverCount > 15) {
+                           button.style.transform = 'translate(0px, 0px)';
+                       }
+
+                       
+                   }
+               </script>
+            </div>
+        </section>
+    </body>
+
+</html>
